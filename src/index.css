@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+@import '@fontsource-variable/cormorant-garamond';
+@import '@fontsource/cinzel/400.css';
+@import '@fontsource/cinzel/600.css';
+@import '@fontsource-variable/eb-garamond';
+
+@theme {
+  /* Backgrounds — deep, warm, palace-dark */
+  --color-mahogany-950: #1c0609;
+  --color-mahogany-900: #2a0a0f;
+  --color-mahogany-800: #4a1218;
+  --color-mahogany-700: #5c1a1f;
+  --color-chocolate-900: #2b1810;
+  --color-umber-700: #6b3410;
+  --color-heritage-brown-800: #3e2723;
+
+  /* Accents — gold system */
+  --color-gold-antique: #c9a227;
+  --color-gold-temple: #d4af37;
+  --color-gold-champagne: #f0e4c3;
+  --color-gold-foil: #e8c874;
+
+  /* Supporting */
+  --color-ivory: #fff8ed;
+  --color-cream: #fdf6e9;
+  --color-olive: #6b7a4f;
+  --color-sacred-green: #4c5b3a;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond Variable', ui-serif, Georgia, serif;
+  --font-label: 'Cinzel', ui-serif, Georgia, serif;
+  --font-body: 'EB Garamond Variable', ui-serif, Georgia, serif;
+
+  /* Easing tokens used across GSAP + Framer Motion for a consistent feel */
+  --ease-royal: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-velvet: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@layer base {
+  * {
+    @apply border-gold-temple/20;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-mahogany-900 text-ivory font-body antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    @apply bg-gold-temple/30 text-ivory;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gold-gradient {
+    background: linear-gradient(
+      120deg,
+      var(--color-gold-antique) 0%,
+      var(--color-gold-foil) 45%,
+      var(--color-gold-champagne) 55%,
+      var(--color-gold-temple) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
