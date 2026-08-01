@@ -1,31 +1,80 @@
 import { invitation } from '@/data/invitation'
 import { SectionContainer } from '@/components/layout/SectionContainer'
-import { Eyebrow } from '@/components/ui/Eyebrow'
+import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ScrollReveal } from '@/components/motion/ScrollReveal'
-import { MandapaMotif } from '@/assets/motifs/MandapaMotif'
-import { AuditoriumMotif } from '@/assets/motifs/AuditoriumMotif'
+import { AmbientParticles } from '@/components/background/AmbientParticles'
+import { MandalaMotif } from '@/assets/motifs/MandalaMotif'
+import { HangingDeepam } from '@/assets/motifs/HangingDeepam'
+import { WeddingCeremonyScene } from '@/assets/motifs/WeddingCeremonyScene'
+import { WeddingReceptionScene } from '@/assets/motifs/WeddingReceptionScene'
 import { fadeUp, staggerContainer } from '@/animations/variants'
 import { motion } from 'framer-motion'
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import { VenueCard } from './VenueCard'
 
 const illustrations = {
-  marriage: MandapaMotif,
-  reception: AuditoriumMotif,
+  marriage: WeddingCeremonyScene,
+  reception: WeddingReceptionScene,
 } as const
 
+const hangingLights = [
+  { left: '10%', height: 80, delay: 0.2 },
+  { left: '28%', height: 55, delay: 0.7 },
+  { left: '72%', height: 60, delay: 0.4 },
+  { left: '90%', height: 85, delay: 0.9 },
+]
+
 export function VenueShowcase() {
+  const prefersReducedMotion = usePrefersReducedMotion()
+
   return (
-    <SectionContainer id="venues" className="bg-mahogany-950">
-      <div className="mb-14 text-center">
-        <Eyebrow>Where To Find Us</Eyebrow>
-      </div>
+    <SectionContainer
+      id="venues"
+      className="bg-mahogany-900"
+      background={
+        <>
+          <div
+            aria-hidden="true"
+            className="from-mahogany-800 via-mahogany-900 to-mahogany-950 absolute inset-0 bg-radial"
+          />
+          <div
+            aria-hidden="true"
+            className="text-gold-temple pointer-events-none absolute top-1/2 left-1/2 h-[130vmin] w-[130vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.08]"
+          >
+            <MandalaMotif className="h-full w-full animate-[spin_180s_linear_infinite]" />
+          </div>
+          <AmbientParticles count={60} className="opacity-80" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0">
+            {hangingLights.map((light) => (
+              <motion.div
+                key={light.left}
+                className="absolute top-0 origin-top"
+                style={{ left: light.left, height: light.height, width: 28, marginLeft: -14 }}
+                animate={prefersReducedMotion ? undefined : { rotate: [-4, 4, -4] }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: light.delay,
+                }}
+              >
+                <HangingDeepam className="h-full w-full" />
+              </motion.div>
+            ))}
+          </div>
+        </>
+      }
+    >
+      <ScrollReveal>
+        <SectionHeading eyebrow="Plan Your Visit" title="The" accent="Venues" tone="dark" />
+      </ScrollReveal>
 
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
         variants={staggerContainer(0.2)}
-        className="grid gap-8 sm:grid-cols-2"
+        className="mt-14 grid items-stretch gap-8 sm:grid-cols-2"
       >
         {invitation.events.map((event) => (
           <motion.div key={event.id} variants={fadeUp}>
@@ -33,12 +82,6 @@ export function VenueShowcase() {
           </motion.div>
         ))}
       </motion.div>
-
-      <ScrollReveal className="mt-10 text-center">
-        <p className="font-body text-ivory/50 mx-auto max-w-lg text-sm italic">
-          "Get Directions" opens a Google Maps search for each venue's address.
-        </p>
-      </ScrollReveal>
     </SectionContainer>
   )
 }

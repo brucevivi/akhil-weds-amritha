@@ -1,21 +1,10 @@
 import { lazy, Suspense } from 'react'
 import { Hero } from '@/sections/Hero/Hero'
-import { InvitationUnfold } from '@/sections/InvitationUnfold/InvitationUnfold'
-import { CustomCursor } from '@/components/cursor/CustomCursor'
+import { AudioToggle } from '@/components/audio/AudioToggle'
 
 const FormalInvitationCard = lazy(() =>
   import('@/sections/FormalInvitation/FormalInvitationCard').then((m) => ({
     default: m.FormalInvitationCard,
-  })),
-)
-const FamilyBlessings = lazy(() =>
-  import('@/sections/FamilyBlessings/FamilyBlessings').then((m) => ({
-    default: m.FamilyBlessings,
-  })),
-)
-const EventTimeline = lazy(() =>
-  import('@/sections/EventTimeline/EventTimeline').then((m) => ({
-    default: m.EventTimeline,
   })),
 )
 const VenueShowcase = lazy(() =>
@@ -33,18 +22,11 @@ function SectionFallback() {
 function App() {
   return (
     <>
-      <CustomCursor />
+      <AudioToggle className="fixed right-5 bottom-5 z-50 sm:right-8 sm:bottom-8" />
       <main>
         <Hero />
-        <InvitationUnfold />
         <Suspense fallback={<SectionFallback />}>
           <FormalInvitationCard />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <FamilyBlessings />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <EventTimeline />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <VenueShowcase />

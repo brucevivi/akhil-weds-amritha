@@ -2,28 +2,25 @@ import { useEffect, useRef } from 'react'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import { cn } from '@/lib/utils'
 
-interface Particle {
+interface Petal {
   x: number
   y: number
-  radius: number
-  speedY: number
-  speedX: number
-  baseOpacity: number
-  twinkleSpeed: number
-  twinklePhase: number
-  isStar: boolean
+  size: number
+  rotation: number
+  rotationSpeed: number
+  fallSpeed: number
+  swayAmplitude: number
+  swaySpeed: number
+  swayPhase: number
+  opacity: number
+  hue: 'gold' | 'rose'
 }
 
-const STAR_RATIO = 0.18
+const PETAL_COUNT = 26
 const GOLD = '212, 175, 55'
+const ROSE = '168, 60, 60'
 
-interface AmbientParticlesProps {
-  className?: string
-  count?: number
-  color?: string
-}
-
-export function AmbientParticles({ className, count = 70, color = GOLD }: AmbientParticlesProps) {
+export function FallingPetals({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const prefersReducedMotion = usePrefersReducedMotion()
 
@@ -38,7 +35,7 @@ export function AmbientParticles({ className, count = 70, color = GOLD }: Ambien
     let width = 0
     let height = 0
     let dpr = Math.min(window.devicePixelRatio || 1, 2)
-    let particles: Particle[] = []
+    let petals: Petal[] = []
     let frameId = 0
     let running = true
     let elapsed = 0
@@ -52,51 +49,48 @@ export function AmbientParticles({ className, count = 70, color = GOLD }: Ambien
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
 
-    const createParticles = () => {
-      particles = Array.from({ length: count }, () => {
-        const isStar = Math.random() < STAR_RATIO
-        return {
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: isStar ? Math.random() * 1.8 + 1.8 : Math.random() * 1.4 + 0.4,
-          speedY: Math.random() * 0.22 + 0.04,
-          speedX: (Math.random() - 0.5) * 0.15,
-          baseOpacity: isStar ? Math.random() * 0.3 + 0.5 : Math.random() * 0.45 + 0.15,
-          twinkleSpeed: Math.random() * 1.2 + 0.4,
-          twinklePhase: Math.random() * Math.PI * 2,
-          isStar,
-        }
-      })
+    const createPetals = () => {
+      petals = Array.from({ length: PETAL_COUNT }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 5 + 4,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.8,
+        fallSpeed: Math.random() * 0.35 + 0.12,
+        swayAmplitude: Math.random() * 26 + 10,
+        swaySpeed: Math.random() * 0.6 + 0.2,
+        swayPhase: Math.random() * Math.PI * 2,
+        opacity: Math.random() * 0.35 + 0.25,
+        hue: Math.random() < 0.6 ? 'gold' : 'rose',
+      }))
+    }
+
+    const drawPetal = (p: Petal) => {
+      const color = p.hue === 'gold' ? GOLD : ROSE
+      ctx.save()
+      ctx.translate(p.x, p.y)
+      ctx.rotate(p.rotation)
+      ctx.beginPath()
+      ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(${color}, ${p.opacity})`
+      ctx.fill()
+      ctx.restore()
     }
 
     const draw = (time: number) => {
       if (!running) return
       elapsed = time / 1000
       ctx.clearRect(0, 0, width, height)
-      for (const p of particles) {
-        p.y -= p.speedY
-        p.x += p.speedX
-        if (p.y < -10) {
-          p.y = height + 10
+      for (const p of petals) {
+        p.y += p.fallSpeed
+        p.rotation += p.rotationSpeed * 0.02
+        const sway = Math.sin(elapsed * p.swaySpeed + p.swayPhase) * p.swayAmplitude * 0.01
+        p.x += sway
+        if (p.y > height + 10) {
+          p.y = -10
           p.x = Math.random() * width
         }
-        const twinkle = (Math.sin(elapsed * p.twinkleSpeed + p.twinklePhase) + 1) / 2
-        const opacity = p.baseOpacity * (0.5 + twinkle * 0.5)
-
-        if (p.isStar) {
-          const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 4)
-          glow.addColorStop(0, `rgba(${color}, ${opacity})`)
-          glow.addColorStop(1, `rgba(${GOLD}, 0)`)
-          ctx.beginPath()
-          ctx.arc(p.x, p.y, p.radius * 4, 0, Math.PI * 2)
-          ctx.fillStyle = glow
-          ctx.fill()
-        }
-
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(${color}, ${opacity})`
-        ctx.fill()
+        drawPetal(p)
       }
       frameId = requestAnimationFrame(draw)
     }
@@ -108,7 +102,7 @@ export function AmbientParticles({ className, count = 70, color = GOLD }: Ambien
     }
 
     resize()
-    createParticles()
+    createPetals()
     frameId = requestAnimationFrame(draw)
 
     window.addEventListener('resize', resize)
@@ -120,7 +114,7 @@ export function AmbientParticles({ className, count = 70, color = GOLD }: Ambien
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', handleVisibility)
     }
-  }, [prefersReducedMotion, count, color])
+  }, [prefersReducedMotion])
 
   if (prefersReducedMotion) return null
 

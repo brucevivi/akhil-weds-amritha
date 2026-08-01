@@ -5,7 +5,10 @@ import { z } from 'zod'
 import { AnimatePresence, motion } from 'framer-motion'
 import { invitation } from '@/data/invitation'
 import { MagneticButton } from '@/components/buttons/MagneticButton'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { OrnamentalDivider } from '@/assets/motifs/KeralaBorder'
 import { cn } from '@/lib/utils'
+import { PostageStamp } from './PostageStamp'
 import { RSVPSuccess } from './RSVPSuccess'
 
 const rsvpSchema = z.object({
@@ -68,108 +71,133 @@ export function RSVPForm() {
     }
   }
 
-  if (status === 'success') {
-    return (
-      <div className="border-gold-temple/40 bg-cream border px-8 py-6 sm:px-14">
-        <RSVPSuccess />
-      </div>
-    )
-  }
-
   return (
-    <div className="border-gold-temple/40 bg-cream border px-8 py-12 sm:px-14 sm:py-16">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-7" noValidate>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className={labelClass}>
-            Your Name
-          </label>
-          <input id="name" className={fieldClass} {...register('name')} />
-          {errors.name && <p className="text-umber-700 text-xs">{errors.name.message}</p>}
-        </div>
+    <div className="relative mx-auto max-w-3xl">
+      <PostageStamp />
 
-        <div className="flex flex-col gap-2">
-          <span className={labelClass}>Attending</span>
-          <div className="flex flex-wrap gap-x-8 gap-y-2 pt-1">
-            {(
-              [
-                { value: 'marriage', label: invitation.events[0].label },
-                { value: 'reception', label: invitation.events[1].label },
-                { value: 'both', label: 'Both Ceremonies' },
-              ] as const
-            ).map((option) => (
-              <label
-                key={option.value}
-                className="font-body text-mahogany-900 flex items-center gap-2 text-sm"
-              >
-                <input
-                  type="radio"
-                  value={option.value}
-                  className="accent-gold-temple"
-                  {...register('attending')}
-                />
-                {option.label}
-              </label>
-            ))}
+      <div
+        className={cn(
+          'border-mahogany-800/70 bg-ivory relative grid overflow-hidden rounded-sm border-2 shadow-xl',
+          'transition-transform duration-500 ease-out hover:rotate-0 sm:-rotate-1',
+          status === 'success' ? '' : 'sm:grid-cols-[0.85fr_1.15fr]',
+        )}
+      >
+        <div
+          aria-hidden="true"
+          className="border-gold-temple/40 pointer-events-none absolute inset-[5px] z-20 rounded-sm border"
+        />
+
+        {status === 'success' ? (
+          <div className="px-8 py-12 sm:px-14">
+            <RSVPSuccess />
           </div>
-        </div>
+        ) : (
+          <>
+            <div className="from-mahogany-900 to-mahogany-800 border-gold-temple/40 flex flex-col justify-center gap-4 border-b border-dashed bg-linear-to-br px-8 py-10 sm:border-r sm:border-b-0 sm:px-10">
+              <Eyebrow>Kindly Respond</Eyebrow>
+              <p className="font-display text-ivory text-3xl">Will You Join Us?</p>
+              <OrnamentalDivider className="text-gold-temple h-4 w-24" />
+              <p className="font-body text-gold-champagne/70 text-sm italic">
+                We've saved a seat for you — send this card back to let us know.
+              </p>
+            </div>
 
-        <div className="flex flex-col gap-2">
-          <label htmlFor="guests" className={labelClass}>
-            Number of Guests
-          </label>
-          <input
-            id="guests"
-            type="number"
-            min={1}
-            max={10}
-            className={cn(fieldClass, 'max-w-24')}
-            {...register('guests')}
-          />
-          {errors.guests && <p className="text-umber-700 text-xs">{errors.guests.message}</p>}
-        </div>
+            <div className="px-8 py-10 sm:px-10">
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6" noValidate>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="name" className={labelClass}>
+                    Your Name
+                  </label>
+                  <input id="name" className={fieldClass} {...register('name')} />
+                  {errors.name && <p className="text-umber-700 text-xs">{errors.name.message}</p>}
+                </div>
 
-        <div className="flex flex-col gap-2">
-          <label htmlFor="message" className={labelClass}>
-            Message For The Couple (optional)
-          </label>
-          <textarea id="message" rows={3} className={fieldClass} {...register('message')} />
-        </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="attending" className={labelClass}>
+                    Attending
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="attending"
+                      className={cn(fieldClass, 'cursor-pointer appearance-none pr-6')}
+                      {...register('attending')}
+                    >
+                      <option value="marriage">{invitation.events[0].label}</option>
+                      <option value="reception">{invitation.events[1].label}</option>
+                      <option value="both">Both Ceremonies</option>
+                    </select>
+                    <span
+                      aria-hidden="true"
+                      className="text-mahogany-800/60 pointer-events-none absolute top-1/2 right-1 -translate-y-1/2 text-xs"
+                    >
+                      ▾
+                    </span>
+                  </div>
+                </div>
 
-        <div className="mt-4 flex flex-col items-center gap-4">
-          <MagneticButton
-            type="submit"
-            disabled={isSubmitting}
-            className="border-mahogany-800/60 text-mahogany-900 hover:border-mahogany-900"
-          >
-            {isSubmitting ? 'Sending…' : 'Send RSVP'}
-          </MagneticButton>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="guests" className={labelClass}>
+                    Number of Guests
+                  </label>
+                  <input
+                    id="guests"
+                    type="number"
+                    min={1}
+                    max={10}
+                    className={cn(fieldClass, 'max-w-24')}
+                    {...register('guests')}
+                  />
+                  {errors.guests && (
+                    <p className="text-umber-700 text-xs">{errors.guests.message}</p>
+                  )}
+                </div>
 
-          <AnimatePresence mode="wait">
-            {status === 'unconfigured' && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="font-body text-umber-700 max-w-sm text-center text-xs"
-              >
-                Online RSVP isn't connected yet — please call or WhatsApp{' '}
-                {invitation.hosts.mobiles[0]} to confirm your attendance.
-              </motion.p>
-            )}
-            {status === 'error' && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="font-body text-umber-700 max-w-sm text-center text-xs"
-              >
-                Something went wrong sending your RSVP — please call or WhatsApp{' '}
-                {invitation.hosts.mobiles[0]} instead.
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-      </form>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="message" className={labelClass}>
+                    Message For The Couple (optional)
+                  </label>
+                  <textarea id="message" rows={2} className={fieldClass} {...register('message')} />
+                </div>
+
+                <div className="mt-2 flex flex-col items-start gap-4">
+                  <MagneticButton
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-mahogany-800 border-mahogany-900 text-gold-champagne hover:bg-mahogany-900 hover:border-gold-temple"
+                  >
+                    {isSubmitting ? 'Sending…' : 'Send RSVP'}
+                  </MagneticButton>
+
+                  <AnimatePresence mode="wait">
+                    {status === 'unconfigured' && (
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="font-body text-umber-700 max-w-sm text-xs"
+                      >
+                        Online RSVP isn't connected yet — please call or WhatsApp{' '}
+                        {invitation.hosts.mobiles[0]} to confirm your attendance.
+                      </motion.p>
+                    )}
+                    {status === 'error' && (
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="font-body text-umber-700 max-w-sm text-xs"
+                      >
+                        Something went wrong sending your RSVP — please call or WhatsApp{' '}
+                        {invitation.hosts.mobiles[0]} instead.
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </form>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }

@@ -108,7 +108,7 @@ export function Hero() {
   )
 
   const handleOpenInvitation = () => {
-    document.getElementById('invitation-unfold')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('invitation')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -120,14 +120,17 @@ export function Hero() {
         aria-hidden="true"
         className="from-mahogany-800 via-mahogany-900 to-mahogany-950 absolute inset-0 bg-radial"
       />
-      <AmbientParticles />
+      <div className="absolute inset-0">
+        <AmbientParticles />
+      </div>
 
       <div
-        ref={mandalaRef}
         aria-hidden="true"
-        className="text-gold-temple absolute top-1/2 left-1/2 h-[140vmin] w-[140vmin] -translate-x-1/2 -translate-y-1/2"
+        className="text-gold-temple pointer-events-none absolute top-1/2 left-1/2 h-[140vmin] w-[140vmin] -translate-x-1/2 -translate-y-1/2"
       >
-        <MandalaMotif className="h-full w-full animate-[spin_140s_linear_infinite]" />
+        <div ref={mandalaRef} className="h-full w-full">
+          <MandalaMotif className="h-full w-full animate-[spin_140s_linear_infinite]" />
+        </div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center px-6 text-center">
@@ -165,11 +168,18 @@ export function Hero() {
           </span>
         </div>
 
-        <div ref={detailsRef} className="mt-10">
-          <Eyebrow>{invitation.weddingLine}</Eyebrow>
-          <p className="font-display text-ivory mt-3 text-2xl sm:text-3xl">
-            {invitation.events[1].displayDate}
-          </p>
+        <div ref={detailsRef} className="mt-10 flex flex-col items-center gap-5">
+          <Eyebrow>You&apos;re Invited To</Eyebrow>
+          <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-12">
+            {invitation.events.map((event) => (
+              <div key={event.id} className="flex flex-col items-center gap-1">
+                <p className="font-label text-gold-champagne/60 text-[11px] tracking-[0.3em] uppercase">
+                  {event.label}
+                </p>
+                <p className="font-display text-ivory text-xl sm:text-2xl">{event.displayDate}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div ref={ctaRef} className="mt-12">

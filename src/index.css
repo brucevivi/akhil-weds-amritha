@@ -88,4 +88,17 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
+
+  .shimmer-on-hover {
+    transition: background-position 1.4s ease;
+  }
+  .shimmer-on-hover:hover {
+    background-position: 100% center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shimmer-on-hover {
+      transition: none;
+    }
+  }
 }

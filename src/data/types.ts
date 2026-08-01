@@ -25,7 +25,6 @@ export interface InvitationData {
     groom: string
     bride: string
   }
-  weddingLine: string
   hosts: HostDetails
   invitationLine: string
   groom: {

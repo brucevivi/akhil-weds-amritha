@@ -11,11 +11,10 @@ export const invitation: InvitationData = {
     groom: 'Vivek',
     bride: 'Gauthami',
   },
-  weddingLine: 'Wedding Reception',
   hosts: {
     names: 'Mr. Vijayanunni & Mrs. Vijayasree',
     address: '"Vaishnavam", Mathur Mana Road, Thottakkara, Ottapalam, Palakkad',
-    mobiles: ['9495189863', '9496569687'],
+    mobiles: ['9447561911', '9495189863'],
   },
   invitationLine:
     'Solicit your esteemed presence with family for a Reception in connection with the marriage of our son',
@@ -44,6 +43,7 @@ export const invitation: InvitationData = {
       venueName: 'Shamili',
       venueAddress: 'Sri Krishnanugraha Hall, Udupi',
       mapQuery: 'Sri Krishnanugraha Hall, Udupi',
+      time: '10:20 am',
     },
     {
       id: 'reception',
@@ -56,6 +56,6 @@ export const invitation: InvitationData = {
       time: '04:30 pm to 07:30 pm',
     },
   ],
-  creditLine: 'Sharing the Happiness: Vikhyath & Haritha',
+  creditLine: 'Sharing the Happiness: Vikhyath, Haritha and Vaishnavi',
   blessingLine: 'Presents in blessings only',
 }

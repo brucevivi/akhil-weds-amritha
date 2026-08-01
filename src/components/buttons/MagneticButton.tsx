@@ -41,7 +41,6 @@ export function MagneticButton({
     <motion.button
       ref={ref}
       type="button"
-      data-cursor-interactive
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       style={disableMagnetism ? undefined : { x: springX, y: springY }}

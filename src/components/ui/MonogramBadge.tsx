@@ -4,10 +4,11 @@ import { invitation } from '@/data/invitation'
 
 interface MonogramBadgeProps {
   className?: string
+  textClassName?: string
   ref?: Ref<HTMLDivElement>
 }
 
-export function MonogramBadge({ className, ref }: MonogramBadgeProps) {
+export function MonogramBadge({ className, textClassName = 'text-3xl', ref }: MonogramBadgeProps) {
   return (
     <div
       ref={ref}
@@ -16,9 +17,9 @@ export function MonogramBadge({ className, ref }: MonogramBadgeProps) {
         className,
       )}
     >
-      <span className="font-display text-3xl">
+      <span className={cn('font-display', textClassName)}>
         {invitation.couple.groom[0]}
-        <span className="text-gold-champagne/60 mx-1 text-lg">&amp;</span>
+        <span className="text-gold-champagne/60 mx-1 text-[0.55em]">&amp;</span>
         {invitation.couple.bride[0]}
       </span>
     </div>
