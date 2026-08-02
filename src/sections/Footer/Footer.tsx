@@ -88,7 +88,7 @@ export function Footer() {
 
         <ScrollReveal variants={fadeIn} className="flex items-center gap-3 pt-2">
           <p className="text-gold-gradient font-display text-3xl sm:text-4xl">
-            {invitation.couple.bride}
+            {invitation.couple.groom}
           </p>
           <motion.span
             className="text-gold-antique text-2xl"
@@ -99,7 +99,7 @@ export function Footer() {
             ♥
           </motion.span>
           <p className="text-gold-gradient font-display text-3xl sm:text-4xl">
-            {invitation.couple.groom}
+            {invitation.couple.bride}
           </p>
         </ScrollReveal>
 
@@ -122,9 +122,7 @@ export function Footer() {
           <p className="text-gold-gradient font-display text-xl sm:text-2xl">
             {creditNames ?? invitation.creditLine}
           </p>
-          <p className="font-body text-gold-champagne/50 mt-1 text-xs">
-            {invitation.blessingLine}
-          </p>
+          <p className="font-body text-gold-champagne/50 mt-1 text-xs">{invitation.blessingLine}</p>
         </motion.div>
 
         <ScrollReveal variants={fadeIn} className="mt-4 flex flex-col items-center gap-3">
