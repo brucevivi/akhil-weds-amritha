@@ -101,9 +101,6 @@ export function FormalInvitationCard() {
             </motion.div>
 
             <motion.div variants={lineVariant} className="flex flex-col items-center gap-3">
-              <p className="font-label text-umber-700/70 text-[11px] tracking-[0.2em] uppercase sm:text-xs">
-                The Families Of {hostNames} &middot; {brideParents}
-              </p>
               <p className="font-body text-mahogany-800/80 max-w-xl text-base sm:text-lg">
                 With hearts full of joy and gratitude, we joyfully announce the wedding of our
                 beloved
