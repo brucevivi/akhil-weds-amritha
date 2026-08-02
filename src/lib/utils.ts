@@ -12,3 +12,9 @@ export function mapsSearchUrl(query: string) {
 export function whatsAppUrl(phone: string, message: string) {
   return `https://wa.me/91${phone}?text=${encodeURIComponent(message)}`
 }
+
+const NBSP = String.fromCharCode(160)
+
+export function keepTitlesTogether(text: string) {
+  return text.replace(/(Mrs?\.)\s+/g, (_match, title: string) => title + NBSP)
+}

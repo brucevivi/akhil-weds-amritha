@@ -9,8 +9,10 @@ import { BellOrnament } from '@/assets/motifs/BellOrnament'
 import { OrnamentalDivider } from '@/assets/motifs/KeralaBorder'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import { fadeUp, reducedMotionVariants, staggerContainer } from '@/animations/variants'
+import { keepTitlesTogether } from '@/lib/utils'
 
-const brideParents = invitation.bride.parents.replace(/^D\/o\s*/, '')
+const brideParents = keepTitlesTogether(invitation.bride.parents.replace(/^D\/o\s*/, ''))
+const hostNames = keepTitlesTogether(invitation.hosts.names)
 
 const blessingVerse = [
   'May every dawn find you together,',
@@ -89,7 +91,7 @@ export function FormalInvitationCard() {
 
             <motion.div variants={lineVariant} className="flex flex-col items-center gap-3">
               <p className="font-label text-umber-700/70 text-[11px] tracking-[0.2em] uppercase sm:text-xs">
-                The Families Of {invitation.hosts.names} &middot; {brideParents}
+                The Families Of {hostNames} &middot; {brideParents}
               </p>
               <p className="font-body text-mahogany-800/80 max-w-xl text-base sm:text-lg">
                 With hearts full of joy and gratitude, we joyfully announce the wedding of our
@@ -127,8 +129,7 @@ export function FormalInvitationCard() {
                 {invitation.groom.name}
               </p>
               <p className="font-body text-umber-700/70 text-sm sm:text-base">
-                son of{' '}
-                <span className="text-mahogany-900 font-medium">{invitation.hosts.names}</span>
+                son of <span className="text-mahogany-900 font-medium">{hostNames}</span>
               </p>
               <p className="font-body text-umber-700/50 text-xs sm:text-sm">
                 {invitation.hosts.address}
