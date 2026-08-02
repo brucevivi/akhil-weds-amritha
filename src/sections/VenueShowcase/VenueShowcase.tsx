@@ -66,7 +66,7 @@ export function VenueShowcase() {
       }
     >
       <ScrollReveal>
-        <SectionHeading eyebrow="Plan Your Visit" title="The" accent="Venues" tone="dark" />
+        <SectionHeading eyebrow="Plan Your Visit" title="The" accent="Venue" tone="dark" />
       </ScrollReveal>
 
       <motion.div
@@ -74,10 +74,10 @@ export function VenueShowcase() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
         variants={staggerContainer(0.2)}
-        className="mt-14 grid items-stretch gap-8 sm:grid-cols-2"
+        className="mt-14 flex justify-center"
       >
         {invitation.events.map((event) => (
-          <motion.div key={event.id} variants={fadeUp}>
+          <motion.div key={event.id} variants={fadeUp} className="w-full max-w-md">
             <VenueCard event={event} Illustration={illustrations[event.id]} />
           </motion.div>
         ))}

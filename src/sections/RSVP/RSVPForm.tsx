@@ -15,7 +15,6 @@ import { RSVPSuccess } from './RSVPSuccess'
 const rsvpSchema = z
   .object({
     name: z.string().trim().min(2, 'Please share your name'),
-    attending: z.enum(['marriage', 'reception', 'both']),
     guests: z.coerce.number().int().min(1, 'At least 1 guest').max(10, 'Max 10 guests'),
     accommodation: z.enum(['no', 'yes']),
     accommodationMobile: z.string().trim().optional(),
@@ -50,7 +49,7 @@ export function RSVPForm() {
     formState: { errors, isSubmitting },
   } = useForm<RSVPInput, unknown, RSVPOutput>({
     resolver: zodResolver(rsvpSchema),
-    defaultValues: { attending: 'both', guests: 1, accommodation: 'no' },
+    defaultValues: { guests: 1, accommodation: 'no' },
   })
 
   const wantsAccommodation = watch('accommodation') === 'yes'
@@ -132,29 +131,6 @@ export function RSVPForm() {
                   </label>
                   <input id="name" className={fieldClass} {...register('name')} />
                   {errors.name && <p className="text-umber-700 text-xs">{errors.name.message}</p>}
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="attending" className={labelClass}>
-                    Attending
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="attending"
-                      className={cn(fieldClass, 'cursor-pointer appearance-none pr-6')}
-                      {...register('attending')}
-                    >
-                      <option value="marriage">{invitation.events[0].label}</option>
-                      <option value="reception">{invitation.events[1].label}</option>
-                      <option value="both">Both Ceremonies</option>
-                    </select>
-                    <span
-                      aria-hidden="true"
-                      className="text-mahogany-800/60 pointer-events-none absolute top-1/2 right-1 -translate-y-1/2 text-xs"
-                    >
-                      ▾
-                    </span>
-                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">

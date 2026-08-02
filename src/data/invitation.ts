@@ -36,18 +36,6 @@ export const invitation: InvitationData = {
   },
   events: [
     {
-      id: 'marriage',
-      label: 'Marriage Ceremony',
-      displayDate: 'Sunday, 30th August 2026',
-      malayalamDate: '1202 Chingam 14',
-      venueName: 'Shamili',
-      venueAddress:
-        'NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
-      mapQuery:
-        'Shamili, NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
-      time: '10:20 am',
-    },
-    {
       id: 'reception',
       label: 'Wedding Reception',
       displayDate: 'Tuesday, 1st September 2026',
