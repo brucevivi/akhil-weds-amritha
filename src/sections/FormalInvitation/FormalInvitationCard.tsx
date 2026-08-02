@@ -3,6 +3,8 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import coupleBackground from '@/assets/photos/couple-silhouette-2.jpg'
 import { invitation } from '@/data/invitation'
 import { SectionContainer } from '@/components/layout/SectionContainer'
+import { LotusPattern } from '@/components/background/LotusPattern'
+import { AmbientParticles } from '@/components/background/AmbientParticles'
 import { OrnamentalFrame } from '@/components/ui/OrnamentalFrame'
 import { GaneshaMotif } from '@/assets/motifs/GaneshaMotif'
 import { FloralBorder } from '@/assets/motifs/FloralBorder'
@@ -46,7 +48,20 @@ export function FormalInvitationCard() {
   }
 
   return (
-    <SectionContainer id="invitation" className="bg-cream">
+    <SectionContainer
+      id="invitation"
+      className="bg-cream"
+      background={
+        <>
+          <div
+            aria-hidden="true"
+            className="from-gold-temple/25 absolute inset-0 bg-radial via-transparent to-transparent"
+          />
+          <LotusPattern color="#C9A227" opacity={0.1} />
+          <AmbientParticles count={30} color="107, 52, 16" className="opacity-50" />
+        </>
+      }
+    >
       <motion.div
         ref={cardRef}
         onPointerMove={handlePointerMove}
