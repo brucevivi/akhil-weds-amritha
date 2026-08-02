@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { AnimatePresence, motion } from 'framer-motion'
+import coupleAccent from '@/assets/photos/couple-silhouette-1.jpg'
 import { invitation } from '@/data/invitation'
 import { MagneticButton } from '@/components/buttons/MagneticButton'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -108,13 +109,19 @@ export function RSVPForm() {
           </div>
         ) : (
           <>
-            <div className="from-mahogany-900 to-mahogany-800 border-gold-temple/40 flex flex-col justify-center gap-4 border-b border-dashed bg-linear-to-br px-8 py-10 sm:border-r sm:border-b-0 sm:px-10">
-              <Eyebrow>Kindly Respond</Eyebrow>
-              <p className="font-display text-ivory text-3xl">We'd Love To Celebrate With You!</p>
-              <OrnamentalDivider className="text-gold-temple h-4 w-24" />
-              <p className="font-body text-gold-champagne/70 text-sm italic">
-                We've saved a seat for you — send this card back to let us know.
-              </p>
+            <div className="from-mahogany-900 to-mahogany-800 border-gold-temple/40 relative flex flex-col justify-center gap-4 overflow-hidden border-b border-dashed bg-linear-to-br px-8 py-10 sm:border-r sm:border-b-0 sm:px-10">
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+                <img src={coupleAccent} alt="" className="h-full w-full object-cover opacity-60" />
+                <div className="from-mahogany-900 via-mahogany-900/70 to-mahogany-900/40 absolute inset-0 bg-linear-to-t" />
+              </div>
+              <div className="relative z-10 flex flex-col gap-4">
+                <Eyebrow>Kindly Respond</Eyebrow>
+                <p className="font-display text-ivory text-3xl">We'd Love To Celebrate With You!</p>
+                <OrnamentalDivider className="text-gold-temple h-4 w-24" />
+                <p className="font-body text-gold-champagne/70 text-sm italic">
+                  We've saved a seat for you — send this card back to let us know.
+                </p>
+              </div>
             </div>
 
             <div className="px-8 py-10 sm:px-10">

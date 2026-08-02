@@ -1,5 +1,6 @@
 import { type PointerEvent as ReactPointerEvent, useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import coupleBackground from '@/assets/photos/couple-silhouette-2.jpg'
 import { invitation } from '@/data/invitation'
 import { SectionContainer } from '@/components/layout/SectionContainer'
 import { OrnamentalFrame } from '@/components/ui/OrnamentalFrame'
@@ -54,6 +55,16 @@ export function FormalInvitationCard() {
         className="relative"
       >
         <OrnamentalFrame className="bg-ivory px-10 shadow-sm sm:px-16">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <img
+              src={coupleBackground}
+              alt=""
+              className="h-full w-full object-cover opacity-40 sepia"
+              style={{ objectPosition: '42% center' }}
+            />
+            <div className="from-ivory via-ivory/60 to-ivory absolute inset-0 bg-linear-to-b" />
+          </div>
+
           <FloralBorder
             aria-hidden="true"
             className="pointer-events-none absolute top-0 left-2 h-full w-6 sm:left-4"
@@ -76,7 +87,7 @@ export function FormalInvitationCard() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={staggerContainer(0.12)}
-            className="flex flex-col items-center gap-6 text-center"
+            className="relative z-10 flex flex-col items-center gap-6 text-center"
           >
             <motion.div
               variants={lineVariant}

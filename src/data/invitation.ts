@@ -42,9 +42,9 @@ export const invitation: InvitationData = {
       malayalamDate: '1202 Chingam 14',
       venueName: 'Shamili',
       venueAddress:
-        'Sri Krishnanugraha Hall, NH 66, Near Ambalpadi Highway Junction, Udupi, Karnataka 576103',
+        'NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
       mapQuery:
-        'Sri Krishnanugraha Hall, NH 66, Near Ambalpadi Highway Junction, Udupi, Karnataka 576103',
+        'Shamili, NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
       time: '10:20 am',
     },
     {
