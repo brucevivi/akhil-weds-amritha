@@ -3,7 +3,7 @@ import { SectionContainer } from '@/components/layout/SectionContainer'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ScrollReveal } from '@/components/motion/ScrollReveal'
 import { AmbientParticles } from '@/components/background/AmbientParticles'
-import { MandalaMotif } from '@/assets/motifs/MandalaMotif'
+import { CoastalMountainScape } from '@/assets/motifs/CoastalMountainScape'
 import { HangingDeepam } from '@/assets/motifs/HangingDeepam'
 import { WeddingCeremonyScene } from '@/assets/motifs/WeddingCeremonyScene'
 import { WeddingReceptionScene } from '@/assets/motifs/WeddingReceptionScene'
@@ -39,9 +39,9 @@ export function VenueShowcase() {
           />
           <div
             aria-hidden="true"
-            className="text-gold-temple pointer-events-none absolute top-1/2 left-1/2 h-[130vmin] w-[130vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.08]"
+            className="text-gold-temple pointer-events-none absolute inset-x-0 bottom-0 h-[40%] opacity-[0.14]"
           >
-            <MandalaMotif className="h-full w-full animate-[spin_180s_linear_infinite]" />
+            <CoastalMountainScape className="h-full w-full" />
           </div>
           <AmbientParticles count={60} className="opacity-80" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0">

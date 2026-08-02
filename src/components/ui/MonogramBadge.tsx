@@ -18,9 +18,9 @@ export function MonogramBadge({ className, textClassName = 'text-3xl', ref }: Mo
       )}
     >
       <span className={cn('font-display', textClassName)}>
-        {invitation.couple.groom[0]}
-        <span className="text-gold-champagne/60 mx-1 text-[0.55em]">&amp;</span>
         {invitation.couple.bride[0]}
+        <span className="text-gold-champagne/60 mx-1 text-[0.55em]">&amp;</span>
+        {invitation.couple.groom[0]}
       </span>
     </div>
   )

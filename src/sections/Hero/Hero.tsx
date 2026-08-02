@@ -133,31 +133,20 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        <div ref={lampRef} className="text-gold-temple mb-6 h-16 w-10 sm:h-20 sm:w-12">
+      <div className="relative z-10 flex flex-col items-center px-6 pb-14 text-center sm:pb-20">
+        <div ref={lampRef} className="text-gold-temple mb-4 h-14 w-9 sm:mb-6 sm:h-20 sm:w-12">
           <TempleLampMotif className="h-full w-full drop-shadow-[0_0_18px_rgba(212,175,55,0.55)]" />
         </div>
 
         <Eyebrow ref={blessingRef}>With the blessings of God &amp; family</Eyebrow>
 
-        <div ref={namesRef} className="mt-6 flex flex-col items-center gap-1 sm:flex-row sm:gap-6">
+        <div
+          ref={namesRef}
+          className="mt-4 flex flex-col items-center gap-1 sm:mt-6 sm:flex-row sm:gap-6"
+        >
           <span
             ref={groomRef}
-            className="text-gold-temple font-display inline-block text-6xl leading-none font-medium sm:text-8xl"
-            style={{
-              backgroundSize: '220% auto',
-              perspective: '900px',
-              transformStyle: 'preserve-3d',
-            }}
-          >
-            {invitation.couple.groom}
-          </span>
-          <span ref={andRef} className="font-label text-gold-champagne/70 text-lg sm:text-2xl">
-            &amp;
-          </span>
-          <span
-            ref={brideRef}
-            className="text-gold-temple font-display inline-block text-6xl leading-none font-medium sm:text-8xl"
+            className="text-gold-temple font-hero inline-block text-5xl leading-none font-semibold sm:text-7xl lg:text-8xl"
             style={{
               backgroundSize: '220% auto',
               perspective: '900px',
@@ -166,9 +155,26 @@ export function Hero() {
           >
             {invitation.couple.bride}
           </span>
+          <span
+            ref={andRef}
+            className="font-display text-gold-champagne/80 text-lg italic sm:text-2xl"
+          >
+            weds
+          </span>
+          <span
+            ref={brideRef}
+            className="text-gold-temple font-hero inline-block text-5xl leading-none font-semibold sm:text-7xl lg:text-8xl"
+            style={{
+              backgroundSize: '220% auto',
+              perspective: '900px',
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            {invitation.couple.groom}
+          </span>
         </div>
 
-        <div ref={detailsRef} className="mt-10 flex flex-col items-center gap-5">
+        <div ref={detailsRef} className="mt-6 flex flex-col items-center gap-4 sm:mt-10 sm:gap-5">
           <Eyebrow>You&apos;re Invited To</Eyebrow>
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-12">
             {invitation.events.map((event) => (
@@ -182,7 +188,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div ref={ctaRef} className="mt-12">
+        <div ref={ctaRef} className="mt-8 sm:mt-12">
           <MagneticButton onClick={handleOpenInvitation}>Open Invitation</MagneticButton>
         </div>
       </div>

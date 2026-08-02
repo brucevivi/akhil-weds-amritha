@@ -12,9 +12,9 @@ export const invitation: InvitationData = {
     bride: 'Gauthami',
   },
   hosts: {
-    names: 'Mr. Vijayanunni & Mrs. Vijayasree',
+    names: 'Mrs. Vijayasree & Mr. Vijayanunni',
     address: '"Vaishnavam", Mathur Mana Road, Thottakkara, Ottapalam, Palakkad',
-    mobiles: ['9447561911', '9495189863'],
+    mobiles: ['9447561911', '9964246500'],
   },
   invitationLine:
     'Solicit your esteemed presence with family for a Reception in connection with the marriage of our son',
@@ -31,7 +31,7 @@ export const invitation: InvitationData = {
   },
   bride: {
     name: 'Gauthami',
-    parents: 'D/o Mr. Janardhan & Mrs. Jayashree',
+    parents: 'D/o Mrs. Jayashree & Mr. Janardhan',
     address: '"Vibhuda Nilaya", Vibhuda Priya Nagar, Udupi',
   },
   events: [
@@ -41,8 +41,10 @@ export const invitation: InvitationData = {
       displayDate: 'Sunday, 30th August 2026',
       malayalamDate: '1202 Chingam 14',
       venueName: 'Shamili',
-      venueAddress: 'Sri Krishnanugraha Hall, Udupi',
-      mapQuery: 'Sri Krishnanugraha Hall, Udupi',
+      venueAddress:
+        'Sri Krishnanugraha Hall, NH 66, Near Ambalpadi Highway Junction, Udupi, Karnataka 576103',
+      mapQuery:
+        'Sri Krishnanugraha Hall, NH 66, Near Ambalpadi Highway Junction, Udupi, Karnataka 576103',
       time: '10:20 am',
     },
     {
@@ -57,5 +59,5 @@ export const invitation: InvitationData = {
     },
   ],
   creditLine: 'Sharing the Happiness: Vikhyath, Haritha and Vaishnavi',
-  blessingLine: 'Presents in blessings only',
+  blessingLine: 'Presents in presence only',
 }

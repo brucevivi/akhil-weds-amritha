@@ -18,6 +18,8 @@ const hangingLights = [
   { left: '92%', height: 65, delay: 0.3 },
 ]
 
+const [creditPrefix, creditNames] = invitation.creditLine.split(': ')
+
 const poemLines = [
   ['Under a sky of temple gold,', 'where lotus blooms and stories unfold,'],
   ['two families become one today,', 'as love quietly finds its way.'],
@@ -86,7 +88,7 @@ export function Footer() {
 
         <ScrollReveal variants={fadeIn} className="flex items-center gap-3 pt-2">
           <p className="text-gold-gradient font-display text-3xl sm:text-4xl">
-            {invitation.couple.groom}
+            {invitation.couple.bride}
           </p>
           <motion.span
             className="text-gold-antique text-2xl"
@@ -97,7 +99,7 @@ export function Footer() {
             ♥
           </motion.span>
           <p className="text-gold-gradient font-display text-3xl sm:text-4xl">
-            {invitation.couple.bride}
+            {invitation.couple.groom}
           </p>
         </ScrollReveal>
 
@@ -112,10 +114,17 @@ export function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-body text-gold-champagne/50 flex flex-col items-center gap-2 text-xs"
+          className="flex flex-col items-center gap-2"
         >
-          <p className="italic">{invitation.creditLine}</p>
-          <p>{invitation.blessingLine}</p>
+          <p className="font-body text-gold-champagne/50 text-xs italic">
+            {creditPrefix ? `${creditPrefix}:` : null}
+          </p>
+          <p className="text-gold-gradient font-display text-xl sm:text-2xl">
+            {creditNames ?? invitation.creditLine}
+          </p>
+          <p className="font-body text-gold-champagne/50 mt-1 text-xs">
+            {invitation.blessingLine}
+          </p>
         </motion.div>
 
         <ScrollReveal variants={fadeIn} className="mt-4 flex flex-col items-center gap-3">

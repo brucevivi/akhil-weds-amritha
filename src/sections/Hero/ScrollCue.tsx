@@ -9,17 +9,15 @@ export function ScrollCue() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: prefersReducedMotion ? 0.3 : 8.5, duration: 1 }}
-      className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3"
+      className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center sm:flex"
     >
-      <span className="font-label text-gold-champagne/60 text-[10px] tracking-[0.4em] uppercase">
-        Scroll
-      </span>
-      <motion.span
-        className="from-gold-champagne/70 h-10 w-px bg-linear-to-b to-transparent"
-        animate={prefersReducedMotion ? undefined : { scaleY: [0.3, 1, 0.3] }}
-        style={{ originY: 0 }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      <div className="border-gold-champagne/50 flex h-9 w-6 justify-center rounded-full border">
+        <motion.span
+          className="bg-gold-champagne/80 mt-1.5 h-2 w-1 rounded-full"
+          animate={prefersReducedMotion ? undefined : { y: [0, 14, 0], opacity: [1, 0, 1] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </div>
     </motion.div>
   )
 }

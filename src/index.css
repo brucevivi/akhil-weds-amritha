@@ -4,6 +4,7 @@
 @import '@fontsource/cinzel/400.css';
 @import '@fontsource/cinzel/600.css';
 @import '@fontsource-variable/eb-garamond';
+@import '@fontsource-variable/playfair-display';
 
 @theme {
   /* Backgrounds — deep, warm, palace-dark */
@@ -31,6 +32,7 @@
   --font-display: 'Cormorant Garamond Variable', ui-serif, Georgia, serif;
   --font-label: 'Cinzel', ui-serif, Georgia, serif;
   --font-body: 'EB Garamond Variable', ui-serif, Georgia, serif;
+  --font-hero: 'Playfair Display Variable', ui-serif, Georgia, serif;
 
   /* Easing tokens used across GSAP + Framer Motion for a consistent feel */
   --ease-royal: cubic-bezier(0.22, 1, 0.36, 1);

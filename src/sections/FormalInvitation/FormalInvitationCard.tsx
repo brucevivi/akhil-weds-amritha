@@ -103,14 +103,13 @@ export function FormalInvitationCard() {
 
             <motion.div variants={lineVariant} className="flex flex-col items-center gap-2">
               <p className="text-gold-gradient shimmer-on-hover font-display cursor-default text-5xl sm:text-6xl">
-                {invitation.groom.name}
+                {invitation.bride.name}
               </p>
               <p className="font-body text-umber-700/70 text-sm sm:text-base">
-                son of{' '}
-                <span className="text-mahogany-900 font-medium">{invitation.hosts.names}</span>
+                daughter of <span className="text-mahogany-900 font-medium">{brideParents}</span>
               </p>
               <p className="font-body text-umber-700/50 text-xs sm:text-sm">
-                {invitation.hosts.address}
+                {invitation.bride.address}
               </p>
             </motion.div>
 
@@ -125,13 +124,14 @@ export function FormalInvitationCard() {
 
             <motion.div variants={lineVariant} className="flex flex-col items-center gap-2">
               <p className="text-gold-gradient shimmer-on-hover font-display cursor-default text-5xl sm:text-6xl">
-                {invitation.bride.name}
+                {invitation.groom.name}
               </p>
               <p className="font-body text-umber-700/70 text-sm sm:text-base">
-                daughter of <span className="text-mahogany-900 font-medium">{brideParents}</span>
+                son of{' '}
+                <span className="text-mahogany-900 font-medium">{invitation.hosts.names}</span>
               </p>
               <p className="font-body text-umber-700/50 text-xs sm:text-sm">
-                {invitation.bride.address}
+                {invitation.hosts.address}
               </p>
             </motion.div>
 

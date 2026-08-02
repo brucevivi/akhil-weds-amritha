@@ -11,12 +11,24 @@ import { cn } from '@/lib/utils'
 import { PostageStamp } from './PostageStamp'
 import { RSVPSuccess } from './RSVPSuccess'
 
-const rsvpSchema = z.object({
-  name: z.string().trim().min(2, 'Please share your name'),
-  attending: z.enum(['marriage', 'reception', 'both']),
-  guests: z.coerce.number().int().min(1, 'At least 1 guest').max(10, 'Max 10 guests'),
-  message: z.string().trim().max(500).optional(),
-})
+const rsvpSchema = z
+  .object({
+    name: z.string().trim().min(2, 'Please share your name'),
+    attending: z.enum(['marriage', 'reception', 'both']),
+    guests: z.coerce.number().int().min(1, 'At least 1 guest').max(10, 'Max 10 guests'),
+    accommodation: z.enum(['no', 'yes']),
+    accommodationMobile: z.string().trim().optional(),
+    message: z.string().trim().max(500).optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.accommodation === 'yes' && !data.accommodationMobile) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['accommodationMobile'],
+        message: 'Please share a mobile number',
+      })
+    }
+  })
 
 type RSVPInput = z.input<typeof rsvpSchema>
 type RSVPOutput = z.output<typeof rsvpSchema>
@@ -33,11 +45,14 @@ export function RSVPForm() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<RSVPInput, unknown, RSVPOutput>({
     resolver: zodResolver(rsvpSchema),
-    defaultValues: { attending: 'both', guests: 1 },
+    defaultValues: { attending: 'both', guests: 1, accommodation: 'no' },
   })
+
+  const wantsAccommodation = watch('accommodation') === 'yes'
 
   const onSubmit = async (data: RSVPOutput) => {
     const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT
@@ -95,7 +110,7 @@ export function RSVPForm() {
           <>
             <div className="from-mahogany-900 to-mahogany-800 border-gold-temple/40 flex flex-col justify-center gap-4 border-b border-dashed bg-linear-to-br px-8 py-10 sm:border-r sm:border-b-0 sm:px-10">
               <Eyebrow>Kindly Respond</Eyebrow>
-              <p className="font-display text-ivory text-3xl">Will You Join Us?</p>
+              <p className="font-display text-ivory text-3xl">We'd Love To Celebrate With You!</p>
               <OrnamentalDivider className="text-gold-temple h-4 w-24" />
               <p className="font-body text-gold-champagne/70 text-sm italic">
                 We've saved a seat for you — send this card back to let us know.
@@ -151,6 +166,57 @@ export function RSVPForm() {
                     <p className="text-umber-700 text-xs">{errors.guests.message}</p>
                   )}
                 </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="accommodation" className={labelClass}>
+                    Do You Want Accommodation?
+                  </label>
+                  <div className="relative max-w-40">
+                    <select
+                      id="accommodation"
+                      className={cn(fieldClass, 'cursor-pointer appearance-none pr-6')}
+                      {...register('accommodation')}
+                    >
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                    <span
+                      aria-hidden="true"
+                      className="text-mahogany-800/60 pointer-events-none absolute top-1/2 right-1 -translate-y-1/2 text-xs"
+                    >
+                      ▾
+                    </span>
+                  </div>
+                </div>
+
+                <AnimatePresence>
+                  {wantsAccommodation && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.35, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="accommodationMobile" className={labelClass}>
+                          Your Mobile Number
+                        </label>
+                        <input
+                          id="accommodationMobile"
+                          type="tel"
+                          className={fieldClass}
+                          {...register('accommodationMobile')}
+                        />
+                        {errors.accommodationMobile && (
+                          <p className="text-umber-700 text-xs">
+                            {errors.accommodationMobile.message}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="message" className={labelClass}>
