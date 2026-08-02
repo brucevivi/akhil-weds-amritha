@@ -41,21 +41,10 @@ export const invitation: InvitationData = {
       displayDate: 'Sunday, 30th August 2026',
       malayalamDate: '1202 Chingam 14',
       venueName: 'Shamili',
-      venueAddress:
-        'NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
+      venueAddress: 'NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
       mapQuery:
         'Shamili, NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
       time: '10:20 am',
-    },
-    {
-      id: 'reception',
-      label: 'Wedding Reception',
-      displayDate: 'Tuesday, 1st September 2026',
-      malayalamDate: '1202 Chingam 16',
-      venueName: "Pisharody's Auditorium",
-      venueAddress: 'Kanniyampuram, Ottappalam',
-      mapQuery: "Pisharody's Auditorium, Kanniyampuram, Ottappalam",
-      time: '04:30 pm to 07:30 pm',
     },
   ],
   creditLine: 'Sharing the Happiness: Vikhyath, Haritha and Vaishnavi',
