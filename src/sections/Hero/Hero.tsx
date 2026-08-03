@@ -138,7 +138,7 @@ export function Hero() {
           <TempleLampMotif className="h-full w-full drop-shadow-[0_0_18px_rgba(212,175,55,0.55)]" />
         </div>
 
-        <Eyebrow ref={blessingRef}>With the blessings of God &amp; family</Eyebrow>
+        <Eyebrow ref={blessingRef}>With the blessings of God and our families</Eyebrow>
 
         <div
           ref={namesRef}
@@ -175,7 +175,7 @@ export function Hero() {
         </div>
 
         <div ref={detailsRef} className="mt-6 flex flex-col items-center gap-4 sm:mt-10 sm:gap-5">
-          <Eyebrow>You&apos;re Invited To</Eyebrow>
+          <Eyebrow>Join us as we begin our forever together</Eyebrow>
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-12">
             {invitation.events.map((event) => (
               <div key={event.id} className="flex flex-col items-center gap-1">
