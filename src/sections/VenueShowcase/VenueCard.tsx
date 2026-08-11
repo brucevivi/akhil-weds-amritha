@@ -43,7 +43,7 @@ export function VenueCard({ event, Illustration }: VenueCardProps) {
 
         <div className="mt-auto pt-6">
           <a
-            href={mapsSearchUrl(event.mapQuery)}
+            href={event.mapUrl ?? mapsSearchUrl(event.mapQuery)}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-mahogany-800 border-mahogany-900 text-gold-champagne hover:bg-mahogany-900 hover:border-gold-temple font-label inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-[11px] tracking-[0.2em] uppercase transition-colors"

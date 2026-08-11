@@ -16,6 +16,7 @@ export interface EventDetail {
   venueName: string
   venueAddress: string
   mapQuery: string
+  mapUrl?: string
   time?: string
 }
 

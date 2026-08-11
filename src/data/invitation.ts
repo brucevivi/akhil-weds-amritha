@@ -8,44 +8,38 @@ import type { InvitationData } from './types'
 export const invitation: InvitationData = {
   invocation: 'Sree Ganeshaya Namaha',
   couple: {
-    groom: 'Vivek',
-    bride: 'Gauthami',
+    groom: 'Akhil',
+    bride: 'Amritha',
   },
   hosts: {
-    names: 'Mrs. Vijayasree & Mr. Vijayanunni',
-    address: '"Vaishnavam", Mathur Mana Road, Thottakkara, Ottapalam, Palakkad',
-    mobiles: ['9447561911', '9964246500'],
+    names: 'Mrs. Sujatha Suresh and Mr. Suresh Kumar (late)',
+    address: 'Souparnika, Kadavil House, P.O Anthikad, Thrissur',
+    mobiles: ['8891557872', '9037960750'],
   },
   invitationLine:
     'Solicit your esteemed presence with family for a Reception in connection with the marriage of our son',
   groom: {
-    name: 'Vivek',
-    lineage: [
-      {
-        label: 'Grand S/o. Thelakkat Panchali Amma & Late Vadikkeettil Narayanan Master',
-      },
-      {
-        label: 'and Kariveettil Malathy Teacher & Late Srambikkal Krishnankutty Nair',
-      },
-    ],
+    name: 'Akhil',
+    lineage: [],
   },
   bride: {
-    name: 'Gauthami',
-    parents: 'D/o Mrs. Jayashree & Mr. Janardhan',
-    address: '"Vibhuda Nilaya", Vibhuda Priya Nagar, Udupi',
+    name: 'Amritha',
+    parents: 'D/o Mrs. Sheeja C M and Mr. Chandran P G (late)',
+    address: 'Kavyamritham, Poossery House, Mukkattukara, Thrissur',
   },
   events: [
     {
       id: 'reception',
       label: 'Wedding Reception',
-      displayDate: 'Tuesday, 1st September 2026',
-      malayalamDate: '1202 Chingam 16',
-      venueName: "Pisharody's Auditorium",
-      venueAddress: 'Kanniyampuram, Ottappalam',
-      mapQuery: "Pisharody's Auditorium, Kanniyampuram, Ottappalam",
-      time: '04:30 pm to 07:30 pm',
+      displayDate: 'Saturday, 5th September 2026',
+      malayalamDate: '',
+      venueName: 'Ababeel Palace Auditorium',
+      venueAddress: 'Thalikulam, Thrissur',
+      mapQuery: 'Ababeel Palace Auditorium, Thalikulam, Thrissur',
+      mapUrl: 'https://maps.app.goo.gl/d11wgVhJUdJ8XhtX8?g_st=aw',
+      time: '06:00 pm to 09:00 pm',
     },
   ],
-  creditLine: 'Sharing the Happiness: Vikhyath, Haritha and Vaishnavi',
+  creditLine: 'Sharing the Happiness: Nikhil, Neenu & family',
   blessingLine: 'Presents in presence only',
 }
