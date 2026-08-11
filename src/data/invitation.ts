@@ -31,7 +31,6 @@ export const invitation: InvitationData = {
       id: 'marriage',
       label: 'Marriage Ceremony',
       displayDate: 'Saturday, 5th September 2026',
-      malayalamDate: '',
       venueName: 'Chaldean Center',
       venueAddress: 'Pallikkulam, Thrissur',
       mapQuery: 'Chaldean Center, Pallikkulam, Thrissur',
