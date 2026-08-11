@@ -74,7 +74,7 @@ export function FormalInvitationCard() {
             <img
               src={coupleBackground}
               alt=""
-              className="h-full w-full scale-125 object-cover opacity-40 sepia"
+              className="h-full w-full scale-100 object-cover opacity-40 sepia"
               style={{
                 objectPosition: 'center 40%',
                 filter: 'grayscale(0.5) contrast(1.2) brightness(0.8)',
