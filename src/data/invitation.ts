@@ -25,7 +25,7 @@ export const invitation: InvitationData = {
   bride: {
     name: 'Amritha',
     parents: 'D/o Mrs. Sheeja C M and Mr. Chandran P G (late)',
-    address: 'Kavyamritham, Poossery House, Mukkattukara, Thrissur',
+    address: 'Kavyamritham, Poossery House, Mukkattukara, P.O Nettissery, Thrissur',
   },
   events: [
     {
