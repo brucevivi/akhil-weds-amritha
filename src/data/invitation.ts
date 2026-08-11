@@ -34,7 +34,7 @@ export const invitation: InvitationData = {
       venueName: 'Chaldean Center',
       venueAddress: 'Pallikkulam, Thrissur',
       mapQuery: 'Chaldean Center, Pallikkulam, Thrissur',
-      mapUrl: 'https://share.google/tIU65fVl6VJOzjxzz',
+      mapUrl: 'https://www.google.com/maps/dir//Chaldean+Centre,+G6CC%2BCQ7,+Pallikulam+Rd,+opposite+Pallikulam+Chaldean+Centre,+Pallikkulam,+Thrissur,+Kerala+680005/@12.8247954,77.687969,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3ba7ee4b001919c7:0x929479a49b0b2922!2m2!1d76.2218311!2d10.5211341?entry=ttu&g_ep=EgoyMDI2MDgwOS4wIKXMDSoASAFQAw%3D%3D',
       time: '10:30 am to 11:30 am',
     },
   ],
