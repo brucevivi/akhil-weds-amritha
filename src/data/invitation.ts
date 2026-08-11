@@ -39,6 +39,6 @@ export const invitation: InvitationData = {
       time: '06:00 pm to 09:00 pm',
     },
   ],
-  creditLine: 'Sharing the Happiness: Nikhil, Neenu & family',
+  creditLine: 'Sharing the Happiness: Nikhil, Neenu & Family',
   blessingLine: 'Presents in presence only',
 }
