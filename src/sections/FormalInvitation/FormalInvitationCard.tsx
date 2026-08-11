@@ -70,12 +70,12 @@ export function FormalInvitationCard() {
         className="relative"
       >
         <OrnamentalFrame className="bg-ivory px-10 shadow-sm sm:px-16">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
             <img
               src={coupleBackground}
               alt=""
-              className="h-full w-full object-cover opacity-40 sepia"
-              style={{ objectPosition: '42% center' }}
+              className="h-full w-full scale-125 object-cover opacity-40 sepia"
+              style={{ objectPosition: 'center 40%', filter: 'grayscale(0.5) contrast(1.2) brightness(0.8)' }}
             />
             <div className="from-ivory via-ivory/60 to-ivory absolute inset-0 bg-linear-to-b" />
           </div>
