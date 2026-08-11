@@ -8,45 +8,37 @@ import type { InvitationData } from './types'
 export const invitation: InvitationData = {
   invocation: 'Sree Ganeshaya Namaha',
   couple: {
-    groom: 'Vivek',
-    bride: 'Gauthami',
+    groom: 'Akhil',
+    bride: 'Amritha',
   },
   hosts: {
-    names: 'Mrs. Vijayasree & Mr. Vijayanunni',
-    address: '"Vaishnavam", Mathur Mana Road, Thottakkara, Ottapalam, Palakkad',
-    mobiles: ['9447561911', '9964246500'],
+    names: 'Mrs. Sujatha Suresh and Mr. Suresh Kumar (late)',
+    address: 'Souparnika, Kadavil House, P.O Anthikad, Thrissur',
+    mobiles: ['8075803336', '8138889694'],
   },
-  invitationLine:
-    'Solicit your esteemed presence with family for a Reception in connection with the marriage of our son',
+  invitationLine: 'Solicit your esteemed presence with family for the Marriage of our son',
   groom: {
-    name: 'Vivek',
-    lineage: [
-      {
-        label: 'Grand S/o. Thelakkat Panchali Amma & Late Vadikkeettil Narayanan Master',
-      },
-      {
-        label: 'and Kariveettil Malathy Teacher & Late Srambikkal Krishnankutty Nair',
-      },
-    ],
+    name: 'Akhil',
+    lineage: [],
   },
   bride: {
-    name: 'Gauthami',
-    parents: 'D/o Mrs. Jayashree & Mr. Janardhan',
-    address: '"Vibhuda Nilaya", Vibhuda Priya Nagar, Udupi',
+    name: 'Amritha',
+    parents: 'D/o Mrs. Sheeja C M and Mr. Chandran P G (late)',
+    address: 'Kavyamritham, Poossery House, Mukkattukara, Thrissur',
   },
   events: [
     {
       id: 'marriage',
       label: 'Marriage Ceremony',
-      displayDate: 'Sunday, 30th August 2026',
-      malayalamDate: '1202 Chingam 14',
-      venueName: 'Shamili',
-      venueAddress: 'NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
-      mapQuery:
-        'Shamili, NH 66, Near Ambalpadi Highway Junction, Brahmagiri, Udupi, Karnataka - 576103',
-      time: '10:20 am',
+      displayDate: 'Saturday, 5th September 2026',
+      malayalamDate: '',
+      venueName: 'Chaldean Center',
+      venueAddress: 'Pallikkulam, Thrissur',
+      mapQuery: 'Chaldean Center, Pallikkulam, Thrissur',
+      mapUrl: 'https://share.google/tIU65fVl6VJOzjxzz',
+      time: '10:30 am to 11:30 am',
     },
   ],
-  creditLine: 'Sharing the Happiness: Vikhyath, Haritha and Vaishnavi',
+  creditLine: 'Sharing the Happiness: Shaju, Kavya, Rishan, & Ishan',
   blessingLine: 'Presents in presence only',
 }

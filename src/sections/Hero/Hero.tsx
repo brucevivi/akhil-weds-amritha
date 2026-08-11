@@ -153,7 +153,7 @@ export function Hero() {
               transformStyle: 'preserve-3d',
             }}
           >
-            {invitation.couple.groom}
+            {invitation.couple.bride}
           </span>
           <span
             ref={andRef}
@@ -170,7 +170,7 @@ export function Hero() {
               transformStyle: 'preserve-3d',
             }}
           >
-            {invitation.couple.bride}
+            {invitation.couple.groom}
           </span>
         </div>
 
