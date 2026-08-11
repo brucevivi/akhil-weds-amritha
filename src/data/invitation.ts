@@ -32,7 +32,6 @@ export const invitation: InvitationData = {
       id: 'reception',
       label: 'Wedding Reception',
       displayDate: 'Saturday, 5th September 2026',
-      malayalamDate: '',
       venueName: 'Ababeel Palace Auditorium',
       venueAddress: 'Thalikulam, Thrissur',
       mapQuery: 'Ababeel Palace Auditorium, Thalikulam, Thrissur',

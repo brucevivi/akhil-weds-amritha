@@ -12,7 +12,6 @@ export interface EventDetail {
   id: 'marriage' | 'reception'
   label: string
   displayDate: string
-  malayalamDate: string
   venueName: string
   venueAddress: string
   mapQuery: string
